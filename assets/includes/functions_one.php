@@ -1649,7 +1649,7 @@ function Wo_UploadImage($file, $name, $type, $type_file, $user_id = 0, $placemen
     if (!file_exists('upload/photos/' . date('Y') . '/' . date('m'))) {
         mkdir('upload/photos/' . date('Y') . '/' . date('m'), 0777, true);
     }
-    $allowed = 'jpg,png,jpeg,gif';
+    $allowed = 'jpg,png,jpeg,gif,webp';
     $new_string = pathinfo($name, PATHINFO_FILENAME) . '.' . strtolower(pathinfo($name, PATHINFO_EXTENSION));
     $extension_allowed = explode(',', $allowed);
     $file_extension = pathinfo($new_string, PATHINFO_EXTENSION);
@@ -1658,9 +1658,12 @@ function Wo_UploadImage($file, $name, $type, $type_file, $user_id = 0, $placemen
     }
     $ar = array(
         'image/png',
+        'image/x-png',
         'image/jpeg',
+        'image/pjpeg',
         'image/gif',
-        'image/jpg'
+        'image/jpg',
+        'image/webp'
     );
     if (!in_array($type_file, $ar)) {
         return false;
@@ -5107,7 +5110,7 @@ function Wo_UploadLogo($data = array())
     if (empty($data)) {
         return false;
     }
-    $allowed = 'jpg,png,jpeg,gif';
+    $allowed = 'jpg,png,jpeg,gif,webp';
     $new_string = pathinfo($data['name'], PATHINFO_FILENAME) . '.' . strtolower(pathinfo($data['name'], PATHINFO_EXTENSION));
     $extension_allowed = explode(',', $allowed);
     $file_extension = pathinfo($new_string, PATHINFO_EXTENSION);
@@ -5143,7 +5146,7 @@ function Wo_UploadNightLogo($data = array())
     if (empty($data)) {
         return false;
     }
-    $allowed = 'jpg,png,jpeg,gif';
+    $allowed = 'jpg,png,jpeg,gif,webp';
     $new_string = pathinfo($data['name'], PATHINFO_FILENAME) . '.' . strtolower(pathinfo($data['name'], PATHINFO_EXTENSION));
     $extension_allowed = explode(',', $allowed);
     $file_extension = pathinfo($new_string, PATHINFO_EXTENSION);
@@ -5179,7 +5182,7 @@ function Wo_UploadBackground($data = array())
     if (empty($data)) {
         return false;
     }
-    $allowed = 'jpg,png,jpeg,gif';
+    $allowed = 'jpg,png,jpeg,gif,webp';
     $new_string = pathinfo($data['name'], PATHINFO_FILENAME) . '.' . strtolower(pathinfo($data['name'], PATHINFO_EXTENSION));
     $extension_allowed = explode(',', $allowed);
     $file_extension = pathinfo($new_string, PATHINFO_EXTENSION);
@@ -5215,7 +5218,7 @@ function Wo_UploadFavicon($data = array())
     if (empty($data)) {
         return false;
     }
-    $allowed = 'jpg,png,jpeg,gif';
+    $allowed = 'jpg,png,jpeg,gif,webp';
     $new_string = pathinfo($data['name'], PATHINFO_FILENAME) . '.' . strtolower(pathinfo($data['name'], PATHINFO_EXTENSION));
     $extension_allowed = explode(',', $allowed);
     $file_extension = pathinfo($new_string, PATHINFO_EXTENSION);

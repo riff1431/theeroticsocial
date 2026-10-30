@@ -9,16 +9,16 @@
 // | Copyright (c) 2017 WoWonder. All rights reserved.
 // +------------------------------------------------------------------------+
 // MySQL Hostname
-$sql_db_host = "127.0.0.1";
+$sql_db_host = getenv('DB_HOST') ?: "127.0.0.1";
 // MySQL Database User
-$sql_db_user = "root";
+$sql_db_user = getenv('DB_USER') ?: "root";
 // MySQL Database Password
-$sql_db_pass = "";
+$sql_db_pass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : "";
 // MySQL Database Name
-$sql_db_name = "eroticsocialdb";
+$sql_db_name = getenv('DB_NAME') ?: "eroticsocialdb";
 
 // Site URL
-$site_url = "http://localhost:8085"; // e.g (http://example.com)
+$site_url = getenv('SITE_URL') ?: "http://localhost:8085"; // e.g (http://example.com)
 
 $auto_redirect = false;
 

@@ -45,7 +45,7 @@
 </div>
 
 <form action="#" method="post" class="profile-avatar-changer" style="display:none">
-    <input type="file" id="avatar" name="avatar" accept="image/x-png, image/jpeg" onchange="Wo_UpdateProfileAvatar();">
+    <input type="file" id="avatar" name="avatar" accept="image/png, image/x-png, image/jpeg, image/jpg, image/gif, image/webp" onchange="Wo_UpdateProfileAvatar();">
     <input type="hidden" name="user_id" id="user-id" value="<?php echo $wo['user']['user_id'];?>">
 </form>
 <script type="text/javascript">
@@ -56,7 +56,7 @@ $(function () {
   var status = $('#status');
 	$('form.profile-avatar-changer').ajaxForm({
     url: Wo_Ajax_Requests_File() + '?f=update_user_avatar_picture&s=start',
-
+    dataType: 'json',
     beforeSend: function () {
       var percentVal = '0%';
       bar.width(percentVal);
@@ -72,7 +72,10 @@ $(function () {
       percent.html(percentVal);
     },
     success: function (data) {
-      if(data.status == 200) {
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch(e) {}
+      }
+      if(data && data.status == 200) {
       	$('#progress').slideUp(200);
         $('.upload-image').html('<img src="' + data.img + '">');
         $('h2').text(data.big_text);
@@ -84,13 +87,22 @@ $(function () {
         $('.skip-step').addClass('vis');
       }
       else{
-      	if(data.invalid_file == 3){
+        $('#progress').slideUp(200);
+      	if(data && data.invalid_file == 3){
           $("#adult_image_file").modal('show');
           Wo_Delay(function(){
             $("#adult_image_file").modal('hide');
           },3000);
+        } else if (data && data.error) {
+          alert(data.error);
+        } else {
+          alert('Upload failed. Please try a different JPG, PNG, GIF, or WEBP image.');
         }
       }
+    },
+    error: function() {
+      $('#progress').slideUp(200);
+      alert('Upload failed. Please check server connection.');
     }
   });
 });
