@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     unzip \
     curl \
+    rsync \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure & install PHP extensions for WoWonder
@@ -60,6 +61,9 @@ WORKDIR /var/www/html
 
 # Copy source code
 COPY . /var/www/html
+
+# Keep a seed copy of repo uploads so the entrypoint can sync new files into persistent volume
+RUN cp -a /var/www/html/upload /var/www/upload_seed
 
 # Copy and setup entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh

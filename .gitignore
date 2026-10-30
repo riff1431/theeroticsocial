@@ -22,3 +22,7 @@ yarn-error.log*
 
 # Node modules
 node_modules/
+
+# Cache templates
+cache/*.tpl
+cache/*/*.tpl
