@@ -22,12 +22,3 @@ yarn-error.log*
 
 # Node modules
 node_modules/
-
-# WoWonder specific
-/changes
-/cache
-/nodejs/models/wo_langs.js
-upload/photos/20*
-upload/videos/20*
-upload/sounds/20*
-upload/files/20*
