@@ -56,8 +56,9 @@ COPY . /var/www/html
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Set base permissions
-RUN chown -R www-data:www-data /var/www/html \
+# Create required folders and set base permissions
+RUN mkdir -p /var/www/html/upload /var/www/html/cache /var/www/html/themes \
+    && chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
     && chmod -R 777 /var/www/html/upload /var/www/html/cache
 

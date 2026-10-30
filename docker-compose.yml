@@ -5,39 +5,23 @@ services:
       dockerfile: Dockerfile
     restart: always
     environment:
-      - DB_HOST=db
-      - DB_USER=${DB_USER:-wowonder}
-      - DB_PASS=${DB_PASS:-SecretWoWonderPass123!}
-      - DB_NAME=${DB_NAME:-wowonder_db}
-      - SITE_URL=${SITE_URL:-http://localhost:8080}
+      - DB_HOST=${DB_HOST:-theeroticsocial-theeroticsocialdb-hlyn8e}
+      - DB_USER=${DB_USER:-eroticsocialdb}
+      - DB_PASS=${DB_PASS:-DGl1g3PsWpm94zy5kDNz}
+      - DB_NAME=${DB_NAME:-eroticsocialdb}
+      - SITE_URL=${SITE_URL:-https://theeroticsocial.com}
     volumes:
       - uploads_data:/var/www/html/upload
       - cache_data:/var/www/html/cache
     ports:
       - "8080:80"
-    depends_on:
-      db:
-        condition: service_healthy
-
-  db:
-    image: mariadb:10.11
-    restart: always
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-allowed-packet=256M
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:-RootPassword123!}
-      MYSQL_DATABASE: ${DB_NAME:-wowonder_db}
-      MYSQL_USER: ${DB_USER:-wowonder}
-      MYSQL_PASSWORD: ${DB_PASS:-SecretWoWonderPass123!}
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./wowonder.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
-    healthcheck:
-      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASS:-RootPassword123!}"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
+    networks:
+      - dokploy-network
 
 volumes:
   uploads_data:
   cache_data:
-  db_data:
+
+networks:
+  dokploy-network:
+    external: true
