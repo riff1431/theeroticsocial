@@ -4317,7 +4317,7 @@ function Wo_GetSideBarAds() {
     $user_id      = $wo['user']['user_id'];
     $user_country = $wo['user']['country_id'];
     $query_one    = '';
-    $con_list     = implode(',', $wo['ad-con']['ads']);
+    $con_list     = (!empty($wo['ad-con']) && !empty($wo['ad-con']['ads']) && is_array($wo['ad-con']['ads'])) ? implode(',', $wo['ad-con']['ads']) : '';
     if ($con_list) {
         $query_one .= " AND `id` NOT IN ({$con_list}) ";
     }

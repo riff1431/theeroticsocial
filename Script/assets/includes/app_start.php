@@ -8,9 +8,13 @@ error_reporting(0);
 require_once "config.php";
 require_once "assets/libraries/DB/vendor/autoload.php";
 
+@mysqli_report(MYSQLI_REPORT_OFF);
 $wo           = array();
 // Connect to SQL Server
 $sqlConnect   = $wo["sqlConnect"] = mysqli_connect($sql_db_host, $sql_db_user, $sql_db_pass, $sql_db_name, 3306);
+if ($sqlConnect) {
+    @mysqli_query($sqlConnect, "SET sql_mode = ''");
+}
 // create new mysql connection
 $mysqlMaria   = new Mysql;
 // Handling Server Errors
@@ -261,16 +265,14 @@ if (!isset($_COOKIE["ad-con"])) {
         "ads" => array()
     ))), time() + 10 * 365 * 24 * 60 * 60);
 }
-$wo["ad-con"] = array();
+$wo["ad-con"] = array("date" => date("Y-m-d"), "ads" => array());
 if (!empty($_COOKIE["ad-con"])) {
     $wo["ad-con"] = json_decode(html_entity_decode($_COOKIE["ad-con"]));
     $wo["ad-con"] = ToArray($wo["ad-con"]);
 }
 if (!is_array($wo["ad-con"]) || !isset($wo["ad-con"]["date"]) || !isset($wo["ad-con"]["ads"])) {
-    setcookie("ad-con", htmlentities(json_encode(array(
-        "date" => date("Y-m-d"),
-        "ads" => array()
-    ))), time() + 10 * 365 * 24 * 60 * 60);
+    $wo["ad-con"] = array("date" => date("Y-m-d"), "ads" => array());
+    setcookie("ad-con", htmlentities(json_encode($wo["ad-con"])), time() + 10 * 365 * 24 * 60 * 60);
 }
 if (is_array($wo["ad-con"]) && isset($wo["ad-con"]["date"]) && strtotime($wo["ad-con"]["date"]) < strtotime(date("Y-m-d"))) {
     setcookie("ad-con", htmlentities(json_encode(array(
