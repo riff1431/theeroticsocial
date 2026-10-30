@@ -1,0 +1,116 @@
+
+<style>
+	.main-wrapper-div {
+		width: fit-content;
+		height: 55rem;
+		border-radius: 5px!important;
+	}
+	.left-form-div {
+		width: 100%;
+	}
+	.form-logo {
+		position: inherit;
+		margin-top: -5rem;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	.mobile-openMenu{
+		display: none!important;
+	}
+	
+	@media (max-width: 768px) {
+		.left-form-smallDiv1 {
+			top: 30rem;
+			left: 3rem;
+		}
+		.left-form-smallDiv2 {
+			right: 6rem;
+			top: 4rem;
+			bottom: 17rem;
+		}
+	}
+	@media (max-width: 500px) {
+		.wrapper {
+			padding: 0 20px;
+		}
+		.main-wrapper-div {
+			width: 100%;
+		}
+	}
+</style>
+<div class="wrapper">
+<div class="main-wrapper-div">
+	<div class="mobile-openMenu"><i class="fas fa-ellipsis-h"></i></div>
+	<div class="mobile-closeMenu"><i class="fas fa-times"></i></div>
+	<div class="left-form-div" style="padding: 0px 4rem;">	
+	<div class="left-form-smallDiv left-form-smallDiv1"></div>
+	<div class="left-form-smallDiv left-form-smallDiv2"></div>
+	<form id="confirm-form" class="animated animated_9 left-form" method="post">
+	<div class="form-logo">
+					<a href="<?php echo $wo['config']['site_url'];?>"><img src="<?php echo $wo['config']['theme_url'];?>/img/logo.<?php echo $wo['config']['logo_extension'];?>" alt="Logo"> </a>
+				</div>
+	<h5 class="title">Confrim your phone</h5>
+					<div id="hideMsg" class="item">
+						<h2><span>60</span></h2>
+					</div>
+					<div class="form-group" id="re-send" style="display:none">
+						<div class="text-center"><?php echo $wo['lang']['activation_get_code_again'];?> <a href="javascript:void(0);" onclick="Wo_ResendCode();"><?php echo $wo['lang']['activation_resend'];?></a></div>
+					</div>
+					<div class="errors"></div>
+					<div class="wow_form_fields" style="width: 100%;">
+						<label for="tag_field"><?php echo $wo['lang']['phone_number']?></label>
+						<input name="phone_num" type="tel" autocomplete="off" placeholder=" " value="<?php echo $wo['confirm_user']['phone_number'];?>" required>
+					</div>
+					<div class="wow_form_fields" style="width: 100%;">
+						<label for="tag_field"><?php echo $wo['lang']['confirmation_code']?></label>
+						<input name="confirm_code" type="text" autocomplete="off" placeholder=" " autofocus required>
+					</div>
+					<input type="hidden" name="user_id" id="confirm-user-id" value="<?php echo $wo['confirm_user']['user_id'];?>"/>
+					<div class="login_signup_combo">
+						<div class="login__">
+							<button type="submit" class="btn btn-main btn-mat btn-mat-raised add_wow_loader"><?php echo $wo['lang']['confirm']?></button>
+						</div>
+					</div>
+				</form>
+	</div>
+
+</div>
+
+</div>
+
+
+
+<div class="container">
+	<div class="footer">
+		<?php echo Wo_LoadPage('footer/welcome');?>
+	</div>
+</div> 
+
+<script>
+var working = false;
+var $this = $('#confirm-form');
+var $state = $this.find('.errors');
+var $login_anim = $('.tag_auth_animation');
+
+$(function() {
+	Wo_SetTimer();
+	$this.ajaxForm({
+		url: Wo_Ajax_Requests_File() + '?f=confirm_user',
+		beforeSend: function() {
+			working = true;$this.find('button').attr("disabled", true);
+		},
+		success: function(data) {
+			if (data.status == 200) {
+				$login_anim.removeClass('d-none');
+				setTimeout(function () {
+					window.location.href = data.location;
+				}, 1000);
+			} else {
+				$this.find('button').attr("disabled", false);
+				$state.html(data.errors);
+			}
+			working = false;
+		}
+	});
+});
+</script>

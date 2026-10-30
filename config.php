@@ -1,12 +1,12 @@
 <?php
 // +------------------------------------------------------------------------+
-// | @author Deen Doughouz (DoughouzForest)
-// | @author_url 1: http://www.wowonder.com
-// | @author_url 2: http://codecanyon.net/user/doughouzforest
-// | @author_email: wowondersocial@gmail.com   
+// | @author Arifur Rahman
+// | @agency Huipper
+// | @url https://huipper.com/
+// | @github https://github.com/arifurfullstack
 // +------------------------------------------------------------------------+
-// | WoWonder - The Ultimate PHP Social Networking Platform
-// | Copyright (c) 2017 WoWonder. All rights reserved.
+// | theeroticsocial - The Ultimate Social Networking Platform
+// | Copyright (c) 2026 theeroticsocial. All rights reserved.
 // +------------------------------------------------------------------------+
 // MySQL Hostname
 $sql_db_host = getenv('DB_HOST') ?: "127.0.0.1";

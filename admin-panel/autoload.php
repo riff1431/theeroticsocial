@@ -213,6 +213,7 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel | <?php echo $wo['config']['siteTitle']; ?></title>
     <link rel="icon" href="<?php echo $wo['config']['theme_url']; ?>/img/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="<?php echo $wo['config']['theme_url']; ?>/img/icon.png">
 
 
     <!-- Main css -->
@@ -288,13 +289,14 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
     </script>
     <style>
         body {background-color: #222;}
-        .btn.btn-primary, a.btn[href="#next"], a.btn[href="#previous"] {color: #fff !important;background: #C32E3A;border-color: #C32E3A;}
-        .btn.btn-primary:not(:disabled):not(.disabled):hover, a.btn[href="#next"]:not(:disabled):not(.disabled):hover, a.btn[href="#previous"]:not(:disabled):not(.disabled):hover, .btn.btn-primary:not(:disabled):not(.disabled):focus, a.btn[href="#next"]:not(:disabled):not(.disabled):focus, a.btn[href="#previous"]:not(:disabled):not(.disabled):focus, .btn.btn-primary:not(:disabled):not(.disabled):active, a.btn[href="#next"]:not(:disabled):not(.disabled):active, a.btn[href="#previous"]:not(:disabled):not(.disabled):active, .btn.btn-primary:not(:disabled):not(.disabled).active, a.btn[href="#next"]:not(:disabled):not(.disabled).active, a.btn[href="#previous"]:not(:disabled):not(.disabled).active {background: #CE3643;border-color: #CE3643;}
-        body.dark .navigation .navigation-menu-body ul li a.active, .breadcrumb .breadcrumb-item.active, body.dark .breadcrumb li.breadcrumb-item.active, body.dark .navigation .navigation-menu-body ul li a.active .nav-link-icon {color: #C32E3A !important;}
-        .card form .form-check-inline input:checked {background-color: #C32E3A;}
-        .card form .form-check-inline input:checked + label::before, .card form .form-check-inline input:active + label::before {border-color: #C32E3A;}
-        .card form .form-check-inline label::after {background-color: #C32E3A;}
-        .select2-container--default.select2-container--focus .select2-selection--multiple {border: 2px solid #C32E3A !important;}
+        .header .header-logo a img.logo {max-height: 44px; width: auto;}
+        .btn.btn-primary, a.btn[href="#next"], a.btn[href="#previous"] {color: #fff !important;background: linear-gradient(135deg, #dfa544 0%, #c59b27 50%, #a06816 100%) !important;border: 1px solid rgba(255,255,255,0.2) !important;box-shadow: 0 4px 14px rgba(197, 155, 39, 0.28) !important;}
+        .btn.btn-primary:not(:disabled):not(.disabled):hover, a.btn[href="#next"]:not(:disabled):not(.disabled):hover, a.btn[href="#previous"]:not(:disabled):not(.disabled):hover, .btn.btn-primary:not(:disabled):not(.disabled):focus, a.btn[href="#next"]:not(:disabled):not(.disabled):focus, a.btn[href="#previous"]:not(:disabled):not(.disabled):focus, .btn.btn-primary:not(:disabled):not(.disabled):active, a.btn[href="#next"]:not(:disabled):not(.disabled):active, a.btn[href="#previous"]:not(:disabled):not(.disabled):active, .btn.btn-primary:not(:disabled):not(.disabled).active, a.btn[href="#next"]:not(:disabled):not(.disabled).active, a.btn[href="#previous"]:not(:disabled):not(.disabled).active {background: linear-gradient(135deg, #ffd46a 0%, #dfa544 50%, #b48130 100%) !important;box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;border-color: rgba(255, 255, 255, 0.35) !important;}
+        body.dark .navigation .navigation-menu-body ul li a.active, .breadcrumb .breadcrumb-item.active, body.dark .breadcrumb li.breadcrumb-item.active, body.dark .navigation .navigation-menu-body ul li a.active .nav-link-icon {color: #c59b27 !important;}
+        .card form .form-check-inline input:checked {background-color: #c59b27;}
+        .card form .form-check-inline input:checked + label::before, .card form .form-check-inline input:active + label::before {border-color: #c59b27;}
+        .card form .form-check-inline label::after {background-color: #c59b27;}
+        .select2-container--default.select2-container--focus .select2-selection--multiple {border: 2px solid #c59b27 !important;}
     </style>
 </head>
 <script type="text/javascript">
@@ -1444,29 +1446,9 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                             <span>System Status</span>
                         </a>
                     </li>
-                    <?php if ($is_admin || ($is_moderoter && ($wo['user']['permission']['changelog'] == 1))) { ?>
-                    <li>
-                        <a <?php echo ($page == 'changelog') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('changelog'); ?>" data-ajax="?path=changelog">
-                            <span class="nav-link-icon">
-                                <i class="material-icons">update</i>
-                            </span>
-                            <span>Changelogs</span>
-                        </a>
-                    </li>
-                    <?php } ?>
-                    <?php if ($is_admin == true) { ?>
-                    <li>
-                        <a href="http://docs.wowonder.com/#faq" target="_blank">
-                            <span class="nav-link-icon">
-                                <i class="material-icons">more_vert</i>
-                            </span>
-                            <span>FAQs</span>
-                        </a>
-                    </li>
-                    <?php } ?>
-                    <a class="pow_link" href="https://bit.ly/2R2jrcz" target="_blank">
+                    <a class="pow_link" href="https://huipper.com/" target="_blank">
                         <p>Powered by</p>
-                        <img src="https://demo.wowonder.com/themes/default/img/logo.png">
+                        <img src="https://huipper.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmain-logo.3n_5kl0bij6lb.png&w=3840&q=75">
                         <b class="badge">v<?php echo $wo['config']['version'];?></b>
                     </a>
                 </ul>

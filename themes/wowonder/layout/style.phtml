@@ -23,14 +23,19 @@
 	--plyr-color-main: <?php echo $wo['config']['btn_background_color'];?> ;
 }
 
-.wo_follow_btn {
-    background: <?php echo $wo['config']['btn_background_color'];?> !important;
+.wo_follow_btn, .btn-main {
+    background: linear-gradient(135deg, #dfa544 0%, #c59b27 50%, #a06816 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 4px 14px rgba(197, 155, 39, 0.28) !important;
+    color: #ffffff !important;
 }
 .wow_htag .htag_top {
     color:  <?php echo $wo['config']['btn_hover_background_color'];?> !important;
 }
-.wo_follow_btn:hover {
-    background: <?php echo $wo['config']['btn_hover_background_color'];?> !important;
+.wo_follow_btn:hover, .btn-main:hover {
+    background: linear-gradient(135deg, #ffd46a 0%, #dfa544 50%, #b48130 100%) !important;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.42) !important;
+    color: #ffffff !important;
 }
 .publisher-box .publisher-hidden-option #progress .progress, .publisher-box .publisher-hidden-option #percent, .wo_new_wallet .wow_mini_wallets h5 {
 	color: <?php echo $wo['config']['btn_background_color'];?>;

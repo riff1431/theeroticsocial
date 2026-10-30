@@ -26,3 +26,9 @@ node_modules/
 # Cache templates
 cache/*.tpl
 cache/*/*.tpl
+cache/users/
+cache/groups/
+*.tmp
+
+# Temporary files
+TEMP/

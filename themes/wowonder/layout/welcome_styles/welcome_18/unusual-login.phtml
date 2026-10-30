@@ -1,0 +1,190 @@
+<style>body{background-color: #ffffff!important;}.hero-container{justify-content: center;}</style>
+
+<div class="header_div">
+   <div class="container">
+      <header>
+            <div class="header_left">
+               <a href="<?php echo $wo['config']['site_url'];?>" class="logo"><img src="<?php echo $wo['config']['theme_url'];?>/img/logo.<?php echo $wo['config']['logo_extension'];?>" alt="Logo"> </a>
+               <ul>
+                  <li>
+                     <span class="lang">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="modal" data-target="#select-language"><svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-translate" style="margin-top: -3px;width: 15px;height: 15px;vertical-align: middle;"><path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" /></svg>
+                        <?php echo $wo['lang']['language'];?></a>
+                     </span>
+                  </li>
+                  <li><a data-ajax="?link1=terms&type=about-us" href="<?php echo Wo_SeoLink('index.php?link1=terms&type=about-us');?>"><?php echo $wo['lang']['about'];?></a></li>
+                  <li><a href="<?php echo Wo_SeoLink('index.php?link1=blogs');?>"><?php echo $wo['lang']['blog'];?></a></li>
+                  <li><a data-ajax="?link1=contact-us" href="<?php echo Wo_SeoLink('index.php?link1=contact-us');?>"><?php echo $wo['lang']['contact_us'];?></a></li>
+                  <?php  if ($wo['config']['directory_system'] == 1) { ?>
+                     <li><a data-ajax="?link1=directory" href="<?php echo Wo_SeoLink('index.php?link1=directory');?>"><?php echo $wo['lang']['directory'];?></a></li>
+                  <?php } ?>
+               </ul>
+            </div>
+            <div class="header_right">
+				   <a href="<?php echo $wo['config']['site_url'];?>"><button><?php echo $wo['lang']['login']?></button></a>
+            </div>
+      </header>
+   </div>
+</div>
+
+<div class="container">
+   <div class="hero-container">
+      <div class="hero-right">
+         <div class="hero_right_form">
+		 <form id="confirm-form" method="post">
+			<div class="alert alert-danger errors"></div>
+			<div class="alert_re"></div>
+			<div class="wow_form_fields">
+				<input id="confirm_code" placeholder="<?php echo $wo['lang']['confirmation_code']; ?>" name="confirm_code" type="text" autofocus />
+				<?php if (!in_array($wo['two_factor_method'], ['authy','google'])) { ?>
+				<div class="send_again">
+					<p id="countDownDateTimer" class="hidden"></p>&nbsp;&nbsp;<a type="button" onclick="Wo_ResendTwoCode()" class="btn main btn-mat" id="resendCode"><?php echo $wo['lang']['send_again']?></a>
+				</div>
+				<?php } ?>
+			</div>
+			<div class="login_signup_combo">
+				<div class="login__">
+					<button type="submit" class="btn btn-main btn-mat add_wow_loader"><?php echo $wo['lang']['confirm']?></button>
+				</div>
+				<div class="signup__"></div>
+			</div>
+		</form>
+         </div>
+      </div>
+   </div>
+</div>
+
+<section class="generate_using_ai">
+   <div class="container">
+      <div class="section-text">
+         <h2><?php echo $wo['lang']['generate_using_ai']?></h2>
+      </div>
+      <div class="row">
+         <div class="col-md-3">
+            <div class="generatingAIDIV">
+               <div class="generatingIcon green">
+                  <svg height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg" id="fi_9229087"><g><path d="m22.0187 16.8203-3.13-7.32003c-.57-1.34-1.42-2.1-2.39-2.15-.96-.05-1.89.62-2.6 1.9l-1.9 3.41003c-.4.72-.97 1.15-1.59 1.2-.63003.06-1.26003-.27-1.77003-.92l-.22-.28c-.71-.89-1.59-1.32-2.49-1.23s-1.67.71-2.18 1.72l-1.73 3.45c-.62 1.25-.56 2.7.17 3.88s2 1.89 3.39 1.89h12.76003c1.34 0 2.59-.67 3.33-1.79.76-1.12.88-2.53.35-3.76z"></path><path d="m6.96984 8.38109c1.86673 0 3.37996-1.51327 3.37996-3.38 0-1.86672-1.51323-3.38-3.37996-3.38-1.86672 0-3.38 1.51328-3.38 3.38 0 1.86673 1.51328 3.38 3.38 3.38z"></path></g></svg>
+               </div>
+               <h5><?php echo $wo['lang']['can_use_ai_image']?></h5>
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="generatingAIDIV">
+               <div class="generatingIcon blue">
+                  <svg enable-background="new 0 0 32 32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" id="fi_11478250"><g id="Grid" display="none"></g><g id="Avatar"></g><g id="Block_Friend"></g><g id="Add_Post"><path d="m30 11.17v1.76h-6.92c-2.21 0-4-1.79-4-4v-6.93h1.76c.79 0 1.56.32 2.12.88l6.16 6.17c.56.56.88 1.33.88 2.12z"></path><path d="m23.08 14.73c-3.198 0-5.8-2.602-5.8-5.8v-6.93h-11.28c-2.21 0-4 1.79-4 4v20c0 2.21 1.79 4 4 4h20c2.21 0 4-1.79 4-4v-11.27zm-3.163 5.836h-3.017v3.017c0 .497-.403.9-.9.9s-.9-.403-.9-.9v-3.017h-3.017c-.497 0-.9-.403-.9-.9s.403-.9.9-.9h3.017v-3.016c0-.497.403-.9.9-.9s.9.403.9.9v3.017h3.017c.497 0 .9.403.9.9s-.403.899-.9.899z"></path></g><g id="Chat_Bubble"></g><g id="Love_Chat"></g><g id="Love"></g><g id="Love_Message"></g><g id="Bookmark"></g><g id="Image"></g><g id="Emoticon"></g><g id="View"></g><g id="Camera"></g><g id="Bio"></g><g id="Like"></g><g id="Add_Story"></g><g id="Verified"></g><g id="Dislike"></g><g id="Reaction"></g><g id="Story_Highlight"></g><g id="Sticker"></g><g id="Hashtag"></g><g id="Lve_Stream"></g><g id="Love_Badge"></g><g id="Rating"></g><g id="Comment"></g></svg>
+               </div>
+               <h5><?php echo $wo['lang']['can_use_ai_post']?></h5>
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="generatingAIDIV">
+               <div class="generatingIcon red">
+                  <svg height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg" id="fi_6463648"><g id="Glyph"><path d="m18 23h-12a1 1 0 0 1 0-2h12a1 1 0 0 1 0 2zm5-17v8a5 5 0 0 1 -5 5h-12a5 5 0 0 1 -5-5v-8a5 5 0 0 1 5-5h12a5 5 0 0 1 5 5zm-18 2a1 1 0 0 0 1 1h6a1 1 0 0 0 0-2h-6a1 1 0 0 0 -1 1zm14 4a1 1 0 0 0 -1-1h-12a1 1 0 0 0 0 2h12a1 1 0 0 0 1-1z"></path></g></svg>
+               </div>
+               <h5><?php echo $wo['lang']['can_use_ai_blog']?></h5>
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="generatingAIDIV">
+               <div class="generatingIcon yellow">
+                  <svg id="fi_9131549" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2_00000088855313069222395470000001121463647142642833_"><g id="Social_Icon"><g id="Avatar"><path d="m256 292.1c33 0 63.5-9.3 87.9-25.1 18.9-12.1 43.5-10.1 60.1 5 46.1 41.8 72.3 101.1 72.2 163.4v26.7c0 27.6-22.4 49.9-50 49.9h-340.4c-27.6 0-50-22.3-50-49.9v-26.7c-.2-62.2 26-121.6 72.1-163.3 16.6-15.1 41.3-17.1 60.1-5 24.5 15.7 54.9 25 88 25z"></path><circle cx="256" cy="123.8" r="123.8"></circle></g></g></g></svg>
+               </div>
+               <h5><?php echo $wo['lang']['convert_avatar_image']?></h5>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<div class="footer">
+   <?php echo Wo_LoadPage('footer/welcome');?>
+</div>
+
+<script>
+	
+function Wo_ResendTwoCode() {
+	$('#resendCode').attr('disabled','true');
+	$('#resendCode').text("<?php echo $wo["lang"]["please_wait"]?>");
+	$.post(Wo_Ajax_Requests_File() + '?f=resend_two_factor', function (data) {
+		
+	  $('#resendCode').text("<?php echo $wo["lang"]["send_again"]?>");
+        if (data.status == 200) {
+        	$('#countDownDateTimer').removeClass('hidden');
+        	var countDownDate = new Date().getTime() + (60000 * 1);
+					var x = setInterval(function() {
+
+					  // Get today's date and time
+					  var now = new Date().getTime();
+
+					  // Find the distance between now and the count down date
+					  var distance = countDownDate - now;
+					  console.log(countDownDate);
+
+					  // Time calculations for days, hours, minutes and seconds
+					  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+					  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+					  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+					  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+					  // Display the result in the element with id="demo"
+					  document.getElementById("countDownDateTimer").innerHTML = minutes + "m " + seconds + "s ";
+
+					  // If the count down is finished, write some text
+					  if (distance < 0) {
+					  	$('#countDownDateTimer').addClass('hidden');
+					  	$('#countDownDateTimer').html('');
+					  	$('#resendCode').removeAttr('disabled');
+					    clearInterval(x);
+
+					  }
+					}, 1000);
+        	$('.alert_re').html("<div class='alert alert-success'>"+data.message+"</div>");
+        	setTimeout(function () {
+						$('.alert_re').html("");
+					},3000);
+        }
+        else{
+        	$('#resendCode').removeAttr('disabled');
+        	$('.alert_re').html("<div class='alert alert-danger'>"+data.message+"</div>");
+					setTimeout(function () {
+						$('.alert_re').html("");
+					},3000);
+        }
+    }).fail(function(data) {
+    	$('#resendCode').removeAttr('disabled');
+	    $('#resendCode').text("<?php echo $wo["lang"]["send_again"]?>");
+    	$('.alert_re').html("<div class='alert alert-danger'>"+data.message+"</div>");
+			setTimeout(function () {
+				$('.alert_re').html("");
+			},3000);
+	});
+}
+var working = false;
+var $this = $('#confirm-form');
+var $state = $this.find('.errors');
+$(function() {
+  $this.ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=confirm_user_unusal_login',
+    beforeSend: function() {
+		working = true;$this.find('button').attr("disabled", true);
+		$this.find('.add_wow_loader').addClass('btn-loading');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+				$state.removeClass('alert-danger');
+      	$state.addClass('alert-success');
+        $state.html('<?php echo $wo['lang']['welcome_'] ?>');
+		$this.find('.add_wow_loader').removeClass('btn-loading');
+        setTimeout(function () {
+         window.location.href = data.location;
+        }, 1000);
+      } else {
+        $this.find('button').attr("disabled", false);
+		$this.find('.add_wow_loader').removeClass('btn-loading');
+        $state.html(data.errors);
+      }
+      working = false;
+    }
+  });
+});
+</script>

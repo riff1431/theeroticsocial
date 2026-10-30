@@ -131,6 +131,36 @@
                           <option value="directory" <?php echo ($wo['config']['directory_landing_page'] == 'directory')   ? ' selected' : '';?> >Directory Page</option>
                         </select>
                         <small class="admin-info">If people are not logged in they will be redirected to this page.</small>
+                        <hr>
+                        <label for="welcome_page_style" class="main-label">Welcome Page Theme / Style</label>
+                        <select class="form-control show-tick" id="welcome_page_style" name="welcome_page_style">
+                          <option value="default" <?php echo (empty($wo['config']['welcome_page_style']) || $wo['config']['welcome_page_style'] == 'default') ? ' selected' : '';?> >Default Theme Welcome Page</option>
+                          <option value="welcome_1" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_1') ? ' selected' : '';?> >Welcome Page 1 (Wonderful Clean Form)</option>
+                          <option value="welcome_2" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_2') ? ' selected' : '';?> >Welcome Page 2 (Split Minimalist)</option>
+                          <option value="welcome_3" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_3') ? ' selected' : '';?> >Welcome Page 3 (Creative Gradient)</option>
+                          <option value="welcome_4" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_4') ? ' selected' : '';?> >Welcome Page 4 (Card Centered)</option>
+                          <option value="welcome_5" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_5') ? ' selected' : '';?> >Welcome Page 5 (Modern Hero Background)</option>
+                          <option value="welcome_6" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_6') ? ' selected' : '';?> >Welcome Page 6 (Dynamic Photo Showcase)</option>
+                          <option value="welcome_6_next" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_6_next') ? ' selected' : '';?> >Welcome Page 6 Next (Animated Slide)</option>
+                          <option value="welcome_7" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_7') ? ' selected' : '';?> >Welcome Page 7 (Colorful Graphic Splash)</option>
+                          <option value="welcome_8" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_8') ? ' selected' : '';?> >Welcome Page 8 (Illustrated Art Style)</option>
+                          <option value="welcome_9" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_9') ? ' selected' : '';?> >Welcome Page 9 (Interactive Multi-Choice)</option>
+                          <option value="welcome_10" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_10') ? ' selected' : '';?> >Welcome Page 10 (Cartoon Wave Fun)</option>
+                          <option value="welcome_11" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_11') ? ' selected' : '';?> >Welcome Page 11 (Wave Curved Bottom)</option>
+                          <option value="welcome_12" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_12') ? ' selected' : '';?> >Welcome Page 12 (Modern Banner Header)</option>
+                          <option value="welcome_13" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_13') ? ' selected' : '';?> >Welcome Page 13 (Elegant 3D Illustration)</option>
+                          <option value="welcome_14" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_14') ? ' selected' : '';?> >Welcome Page 14 (Vector Isometric Blue)</option>
+                          <option value="welcome_15" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_15') ? ' selected' : '';?> >Welcome Page 15 (Clean Startup Studio)</option>
+                          <option value="welcome_16" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_16') ? ' selected' : '';?> >Welcome Page 16 (Minimal Sleek Tech)</option>
+                          <option value="welcome_17" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_17') ? ' selected' : '';?> >Welcome Page 17 (Creative Character Portrait)</option>
+                          <option value="welcome_18" <?php echo ($wo['config']['welcome_page_style'] == 'welcome_18') ? ' selected' : '';?> >Welcome Page 18 (Premium Gradient Character)</option>
+                        </select>
+                        <small class="admin-info">Select which welcome page layout / theme to display to guests and new visitors. Automatically saves and activates immediately.</small>
+                        <div style="margin-top: 10px;">
+                            <a id="preview-welcome-btn" href="<?php echo $wo['config']['site_url'];?>/index.php?link1=welcome" target="_blank" class="btn btn-info btn-sm waves-effect">
+                                <i class="fa fa-external-link"></i> Preview Welcome Page in New Tab
+                            </a>
+                        </div>
                         
                         <!-- <div class="general-settings-alert"></div> -->
                         <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
@@ -578,6 +608,16 @@ $(function() {
     });
 
     var setTimeOutColor = setTimeout(function (){});
+    $('#welcome_page_style').on('change', function() {
+        var val = $(this).val();
+        var baseUrl = '<?php echo $wo['config']['site_url'];?>/index.php?link1=welcome';
+        if (val && val !== 'default') {
+            $('#preview-welcome-btn').attr('href', baseUrl + '&preview_welcome=' + val);
+        } else {
+            $('#preview-welcome-btn').attr('href', baseUrl);
+        }
+    });
+
     $('select').on('change', function() {
          clearTimeout(setTimeOutColor);
         var thisElement = $(this);

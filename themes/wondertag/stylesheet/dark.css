@@ -1,14 +1,14 @@
 /*Basic*/
 :root {
-	--body-bg: #121212;
-	--header-background: #212121;
-	--header-color: #e8e8e8;
-	--header-hover-color: #fff;
-	--header-search-color: rgb(255 255 255 / 0.1);
+	--body-bg: #0b0b0e;
+	--header-background: #0d0d10;
+	--header-color: #fdfcf7;
+	--header-hover-color: #ffd46a;
+	--header-search-color: rgba(255, 255, 255, 0.08);
 }
-body, .tag_create_blog {background: #121212;color: #dcdcdc;}
-.btn-main.focus, .btn-main:focus, .btn-main-rev:focus {box-shadow: 0 0 0 0.1rem #212121, 0 0 0 0.2rem var(--main-hover);}
-.wow_content, .post .panel, .user-ad-container .panel-white {background-color: #212121;box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px 0 rgb(0 0 0 / 0.46);}
+body, .tag_create_blog {background: #0b0b0e;color: #dcdcdc;}
+.btn-main.focus, .btn-main:focus, .btn-main-rev:focus {box-shadow: 0 0 0 0.1rem #0d0d10, 0 0 0 0.2rem var(--main-hover);}
+.wow_content, .post .panel, .user-ad-container .panel-white {background-color: #141418;box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px 0 rgb(0 0 0 / 0.46);}
 a, a:focus, a:hover {color: #c5c5c5;}
 .tag_create_box {color: #aaa;background-color: rgb(0 0 0 / 50%);border-color: #3d3d3d;}
 .tag_create_box:hover {background: #000;}

@@ -15,6 +15,205 @@
 	--plyr-video-control-background-hover: rgba(255, 255, 255, 0.2);
 	--plyr-range-fill-background: #fff;
 	--plyr-range-track-height: 3px;
+
+	/* Premium Luxury Palette Variables */
+	--tes-gold-light: #dfa544;
+	--tes-gold-pure: #c59b27;
+	--tes-gold-burnished: #ab7d18;
+	--tes-gold-glow: rgba(197, 155, 39, 0.3);
+	--tes-obsidian: #0d0d10;
+	--tes-surface-dark: #141418;
+}
+
+/* Premium Luxury Metallic Gold Buttons */
+.btn-main, 
+.btn-main-rev:hover, 
+.ui-timepicker-div+.ui-datepicker-buttonpane > button.ui-priority-primary,
+.cc-btn.cc-dismiss {
+	background: linear-gradient(135deg, #dfa544 0%, #c59b27 50%, #a06816 100%) !important;
+	color: #ffffff !important;
+	border: 1px solid rgba(255, 255, 255, 0.22) !important;
+	box-shadow: 0 4px 15px rgba(197, 155, 39, 0.28) !important;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.3px !important;
+	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.btn-main:hover, 
+.btn-main:focus, 
+.btn-main-rev:focus,
+.cc-btn.cc-dismiss:hover {
+	background: linear-gradient(135deg, #ffd46a 0%, #dfa544 50%, #b48130 100%) !important;
+	color: #ffffff !important;
+	box-shadow: 0 6px 22px rgba(212, 175, 55, 0.42) !important;
+	border-color: rgba(255, 255, 255, 0.35) !important;
+	transform: translateY(-1px);
+}
+.btn-main:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 8px rgba(197, 155, 39, 0.3) !important;
+}
+.btn-main.focus, .btn-main:focus, .btn-main-rev:focus {
+	box-shadow: 0 0 0 0.15rem rgba(255, 255, 255, 0.8), 0 0 0 0.25rem #c59b27 !important;
+}
+.btn-main-rev {
+	color: #c59b27 !important;
+	border: 1.5px solid #c59b27 !important;
+	background: transparent !important;
+	font-weight: 500 !important;
+	transition: all 0.2s ease !important;
+}
+
+/* Luxury Header & Navigation Bar */
+nav.navbar.navbar-default, 
+.tag_navbar_top, 
+.navbar-default {
+	background-color: var(--header-background) !important;
+	border-bottom: 1px solid rgba(212, 175, 55, 0.22) !important;
+	box-shadow: 0 4px 22px rgba(0, 0, 0, 0.35) !important;
+}
+.header-brand img {
+	filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.25));
+	transition: transform 0.2s ease;
+}
+.header-brand:hover img {
+	transform: scale(1.02);
+}
+.tag_header .search-input, 
+.tag_search_box input, 
+.header-search-container input {
+	background-color: var(--header-search-color) !important;
+	border: 1px solid rgba(212, 175, 55, 0.25) !important;
+	color: var(--header-color) !important;
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+	transition: all 0.2s ease-in-out;
+}
+.tag_header .search-input:focus, 
+.tag_search_box input:focus, 
+.header-search-container input:focus {
+	border-color: #dfa544 !important;
+	box-shadow: 0 0 12px rgba(212, 175, 55, 0.35), inset 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+	background-color: #1a1a20 !important;
+}
+.tag_hdr_droptoggle {
+	transition: all 0.2s ease;
+}
+.tag_hdr_droptoggle:hover {
+	color: #ffd46a !important;
+	filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4));
+}
+
+/* Form Inputs & Animated Focus States */
+.tag_field > input:focus, 
+.tag_field > textarea:focus, 
+.tag_field > select:focus,
+.form-control:focus {
+	border-color: #c59b27 !important;
+	box-shadow: 0 0 0 2px rgba(197, 155, 39, 0.2) !important;
+}
+.tag_field > input:focus + span, 
+.tag_field > textarea:focus + span, 
+.tag_field > select:focus + span {
+	color: #c59b27 !important;
+}
+.tag_field > input + span::after, 
+.tag_field > textarea + span::after, 
+.tag_field > select + span::after {
+	background-color: #c59b27 !important;
+}
+.round-check input:checked+label:before {
+	background: linear-gradient(135deg, #dfa544, #c59b27) !important;
+	border: 0 !important;
+}
+
+/* Luxury Accents & Badges */
+.tag_prem, 
+.tag_pro_badge, 
+.wo_page_hdng span, 
+.select_radio_btn_innr label > input:checked ~ .sr_btn_lab_innr .price {
+	background: linear-gradient(135deg, #ffd46a 0%, #dfa544 50%, #b48130 100%) !important;
+	color: #0d0d10 !important;
+	font-weight: 600 !important;
+	box-shadow: 0 2px 10px rgba(197, 155, 39, 0.3) !important;
+	text-shadow: none !important;
+}
+.tag_prem {
+	border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+.tag_prem span {
+	color: #0d0d10 !important;
+	font-weight: 700 !important;
+}
+.new-update-alert, 
+.recipient-chat-user .new-message-alert, 
+.messages-recipients-list .new-message-alert {
+	background: linear-gradient(135deg, #dfa544, #a06816) !important;
+	color: #ffffff !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.tag_page_nav li.active a {
+	color: #c59b27 !important;
+	font-weight: 600 !important;
+	border-bottom: 2px solid #c59b27 !important;
+}
+.wow_blog_cats a.active {
+	background: linear-gradient(135deg, #dfa544 0%, #c59b27 100%) !important;
+	color: #ffffff !important;
+	box-shadow: 0 3px 10px rgba(197, 155, 39, 0.28) !important;
+}
+.verified-color {
+	color: #dfa544 !important;
+}
+.verified-color svg path:first-child {
+	fill: #dfa544 !important;
+}
+.verified-color svg path:last-child {
+	fill: #0d0d10 !important;
+}
+.tag_progress .progress-bar, .barloading:before {
+	background: linear-gradient(90deg, #dfa544, #c59b27, #ffd46a) !important;
+}
+
+/* Elevated Cards & Luxury Shadows */
+.wow_content, .post .panel, .user-ad-container .panel-white {
+	border-radius: 12px;
+	border: 1px solid rgba(212, 175, 55, 0.1);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+	transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.wow_content:hover, .post .panel:hover {
+	border-color: rgba(212, 175, 55, 0.2);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+/* Luxury Auth & Welcome Elements */
+.tag_auth_box {
+	border-radius: 16px !important;
+	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12), 0 0 1px rgba(212, 175, 55, 0.3) !important;
+	border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Dark Mode Luxury Enhancements */
+body.dark, body[data-mode="night"], [data-mode="night"] body, .night-mode {
+	background-color: #0b0b0e !important;
+}
+[data-mode="night"] .wow_content, 
+[data-mode="night"] .post .panel, 
+[data-mode="night"] .user-ad-container .panel-white,
+[data-mode="night"] .modal-content {
+	background-color: #141418 !important;
+	border: 1px solid rgba(212, 175, 55, 0.14) !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+[data-mode="night"] .dropdown-menu {
+	background-color: #16161b !important;
+	border: 1px solid rgba(212, 175, 55, 0.2) !important;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+}
+[data-mode="night"] .tag_sidebar,
+[data-mode="night"] .tag_navbar_top_side {
+	background-color: #0d0d10 !important;
+	border-right-color: rgba(212, 175, 55, 0.12) !important;
 }
 
 <?php

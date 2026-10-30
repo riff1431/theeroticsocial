@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rsync \
     && rm -rf /var/lib/apt/lists/*
 
-# Configure & install PHP extensions for WoWonder
+# Configure & install PHP extensions for theeroticsocial
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) \
         mysqli \
@@ -34,7 +34,7 @@ RUN a2enmod rewrite headers expires deflate mime filter
 # Allow .htaccess overrides in Apache
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
-# Production PHP & OPcache settings for high performance WoWonder
+# Production PHP & OPcache settings for high performance theeroticsocial
 RUN { \
     echo 'upload_max_filesize = 500M'; \
     echo 'post_max_size = 500M'; \

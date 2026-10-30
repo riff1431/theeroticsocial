@@ -1,0 +1,345 @@
+<!-- <?php
+$fields = Wo_GetWelcomeFileds();
+?>
+<style>
+   .wow_form_fields {
+      display: inline-grid;
+      width: 49%;
+   }
+   .login_left_combo {
+      background: url('<?php echo $wo['config']['theme_url'];?>/img/welcome/register.jpg');
+      background-size: cover;
+      background-position: bottom;
+      transition: 1s
+   }
+   .login_left_combo:hover{
+      background-position: initial;
+   }
+</style>
+<div class="wrapper">
+   <div class="wrapper-changeColors">
+      <div class="changeColorOpenMenu">
+<svg id="icons" enable-background="new 0 0 64 64" height="512" viewBox="0 0 64 64" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m63 32h-10c0-5.801-2.35-11.051-6.15-14.851l7.07-7.069c5.61 5.609 9.08 13.359 9.08 21.92z" fill="#f6bb42"/><path d="m53 32h10c0 8.55-3.46 16.3-9.08 21.909l-7.07-7.06c3.8-3.799 6.15-9.049 6.15-14.849z" fill="#8cc152"/><path d="m53.92 53.909v.011c-5.61 5.609-13.35 9.08-21.92 9.08v-10c5.8 0 11.05-2.351 14.85-6.15z" fill="#37bc9b"/><path d="m53.92 10.08-7.07 7.069c-3.8-3.799-9.05-6.149-14.85-6.149v-10c8.57 0 16.31 3.47 21.92 9.08z" fill="#e9573f"/><path d="m53 32h-9.99-.01c0-3.04-1.23-5.79-3.22-7.78l7.069-7.07c3.801 3.799 6.151 9.049 6.151 14.85z" fill="#ffce54"/><path d="m39.78 39.779 7.069 7.07c-3.799 3.8-9.049 6.151-14.849 6.151v-10c3.04 0 5.79-1.23 7.78-3.221z" fill="#48cfad"/><path d="m32 53v10c-8.56 0-16.31-3.471-21.92-9.08l7.07-7.07c3.8 3.799 9.06 6.15 14.85 6.15z" fill="#4a89dc"/><path d="m32 43v10c-5.79 0-11.05-2.351-14.85-6.15l7.069-7.07c1.991 1.99 4.751 3.22 7.781 3.22z" fill="#5d9cec"/><path d="m32 11v10c-3.03 0-5.78 1.229-7.77 3.22h-.01l-7.069-7.07c3.799-3.8 9.059-6.15 14.849-6.15z" fill="#ed5565"/><path d="m17.15 46.85-7.07 7.07c-5.61-5.61-9.08-13.36-9.08-21.92h10c0 5.8 2.35 11.05 6.15 14.85z" fill="#967adc"/><path d="m43.01 32h9.99c0 5.8-2.35 11.05-6.15 14.85l-7.069-7.07c1.989-1.99 3.219-4.751 3.219-7.78z" fill="#a0d468"/><path d="m17.15 17.149 7.069 7.07c-1.989 1.991-3.219 4.741-3.219 7.781h-10c0-5.801 2.35-11.051 6.15-14.851z" fill="#ec87c0"/><path d="m24.22 39.779-7.069 7.07c-3.801-3.799-6.151-9.049-6.151-14.849h10c0 3.029 1.23 5.79 3.22 7.779z" fill="#ac92ec"/><path d="m10.08 10.08 7.07 7.069c-3.8 3.8-6.15 9.05-6.15 14.851h-10c0-8.561 3.47-16.311 9.08-21.92z" fill="#d770ad"/><path d="m46.85 17.149-7.069 7.07c-1.991-1.99-4.741-3.219-7.781-3.219v-10c5.8 0 11.05 2.35 14.85 6.149z" fill="#fc6e51"/><path d="m32 1v10c-5.79 0-11.05 2.35-14.85 6.149l-7.07-7.069c5.61-5.61 13.36-9.08 21.92-9.08z" fill="#da4453"/></svg></div>
+      <div class="changeColors">
+         <div class="changeColorBtn defaultColor"></div>
+         <div class="changeColorBtn green"></div>
+         <div class="changeColorBtn red"></div>
+         <div class="changeColorBtn blue"></div>
+         <div class="changeColorBtn pink"></div>
+         <div class="changeColorBtn openPink"></div>
+      </div>
+   </div>
+   <div class="login">
+
+      <div class="col-md-6">
+         <div class="login_innre">
+		 <form id="register" method="post">
+		 <div class="form-head">
+               <a href="<?php echo $wo['config']['site_url'];?>" class="logo"><img src="<?php echo $wo['config']['theme_url'];?>/img/logo.<?php echo $wo['config']['logo_extension'];?>" alt="Logo"> </a>
+               <a href="<?php echo $wo['config']['site_url'];?>">Home</a>
+            </div>
+				<p class="title main"><?php echo $wo['lang']['register']?></p>
+				<p class="desc"><?php echo str_replace(array('{site_name}', '{Site_Name}', '{sito_name}'), array($wo['config']['siteName'], $wo['config']['siteName'], $wo['config']['siteName']), $wo['lang']['register_create_account'])?></p>
+				<div class="alert alert-danger errors"></div>
+				<?php if ($wo['config']['password_complexity_system'] == 1) { ?>
+						<ul class="list-unstyled helper-text">
+							<li class="length"><?php echo $wo['lang']['least_characters']; ?></li>
+							<li class="lowercase"><?php echo $wo['lang']['contain_lowercase']; ?></li>
+							<li class="uppercase"><?php echo $wo['lang']['contain_uppercase']; ?></li>
+							<li class="special"><?php echo $wo['lang']['number_special']; ?></li>
+						</ul>
+					<?php } ?>
+				<?php if ($wo['config']['auto_username'] == 1) { ?>
+					<div class="wow_form_fields">
+						<label for="first_name"><?php echo $wo['lang']['first_name']?></label>
+						<input id="first_name" name="first_name" type="text" autocomplete="off" autofocus>
+					</div>
+					<div class="wow_form_fields">
+						<label for="last_name"><?php echo $wo['lang']['last_name']?></label>
+						<input id="last_name" name="last_name" type="text" autocomplete="off">
+					</div>
+				<?php }else{ ?>
+					<div class="wow_form_fields">
+						<label for="username"><?php echo $wo['lang']['username']?></label>
+						<input id="username" name="username" type="text" autocomplete="off" autofocus>
+					</div>
+				<?php } ?>
+				<div class="wow_form_fields">
+					<label for="email"><?php echo $wo['lang']['email_address']?></label>
+					<input id="email" name="email" type="email" />
+				</div>
+				<?php if($wo['config']['sms_or_email'] == 'sms') {?>
+					<div class="wow_form_fields">
+						<label for="phone_num_ex"><?php echo $wo['lang']['phone_num_ex']?></label>
+						<input id="phone_num_ex" name="phone_num" type="text" />
+					</div>
+				<?php } ?>
+				<div class="wow_form_fields">
+					<label for="password"><?php echo $wo['lang']['password']?></label>
+					<input id="password" name="password" type="password" />
+				</div>
+				<div class="wow_form_fields">
+					<label for="confirm_password"><?php echo $wo['lang']['confirm_password']?></label>
+					<input id="confirm_password" name="confirm_password" type="password" />
+				</div>
+				<?php
+					if (!empty($fields) && count($fields) > 0) {
+						foreach ($fields as $key => $wo['field']) {
+							echo Wo_LoadPage('welcome/fields');
+						}
+					}
+				?>
+				<div class="wow_form_fields">
+					<label for="gender"><?php echo $wo['lang']['gender']?></label>
+					<select name="gender" id="gender">
+						<option value="0"><?php echo $wo['lang']['gender']?></option>
+						<?php foreach ($wo['genders'] as $key => $gender) { ?>
+							<option value="<?php echo($key) ?>"><?php echo $gender; ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				<?php if($wo['config']['reCaptcha'] == 1) {?>
+					<div class="form-group" style="margin-top:10px;">
+						<div class="g-recaptcha" data-sitekey="<?php echo $wo['config']['reCaptchaKey']?>"></div>
+					</div>
+				<?php } ?>
+				<?php if(!empty( $_GET['last_url'])){?>
+					<div class="form-group">
+						<input type="hidden" name="last_url" value="<?php echo urldecode(Wo_Secure($_GET['last_url']));?>">
+					</div>
+				<?php } ?>
+				<div class="terms">
+					<input type="checkbox" name="accept_terms" id="accept_terms" onchange="activateButton(this)">
+					<label for="accept_terms">
+						<?php echo $wo['lang']['terms_agreement'] ?> <a href="<?php echo Wo_SeoLink('index.php?link1=terms&type=terms');?>" class="main"><?php echo $wo['lang']['terms_of_use'] ?></a> & <a href="<?php echo Wo_SeoLink('index.php?link1=terms&type=privacy-policy');?>" class="main"><?php echo $wo['lang']['privacy_policy'] ?></a>
+					</label>
+					<div class="clear"></div>
+				</div>
+				<div class="login_signup_combo">
+					<div class="login__">
+						<button type="submit" style="background-color: #19375b!important;" class="btn btn-main btn-mat add_wow_loader" id="sign_submit" disabled><?php echo $wo['lang']['lets_go']?></button>
+						<div><p><?php echo $wo['lang']['already_have_account']?> <a class="dec main" href="<?php echo $wo['config']['site_url'];?>"><?php echo $wo['lang']['login']?></a></p></div>
+					</div>
+				</div>
+				<?php
+				 if (isset($_GET['invite']) && (Wo_IsAdminInvitationExists($_GET['invite']) || Wo_IsUserInvitationExists($_GET['invite']))): ?>
+					<input type="text" class="hidden" value="<?php echo $_GET['invite']; ?>" name="invited">
+				<?php endif; ?>
+			</form>
+         </div>
+         <div class="footer">
+            <?php echo Wo_LoadPage('footer/welcome');?>
+            <div class="clearfix"></div>
+         </div>
+      </div>
+      </div>
+   </div>
+</div>
+
+<script>
+
+
+
+$('.changeColorOpenMenu').on('click', function() {
+   $('.changeColors').css('display', 'flex');
+})
+
+$('.changeColorBtn').on('click', function() {
+   $('.changeColors').fadeOut();
+})
+
+$('.changeColorBtn.green').on('click', function() {
+   $('.form-head>a:nth-child(2), .btn-mat').attr('style', 'background-color:#41fe70!important;');
+   $('.login .title, .wow_form_fields>div>a, a.dec.main').attr('style', 'color: #41fe70!important;');
+})
+
+$('.changeColorBtn.red').on('click', function() {
+   $('.form-head>a:nth-child(2), .btn-mat').attr('style', 'background-color:#ff5e5e!important;');
+   $('.login .title, .wow_form_fields>div>a, a.dec.main').attr('style', 'color: #ff5e5e!important;');
+})
+
+$('.changeColorBtn.blue').on('click', function() {
+   $('.form-head>a:nth-child(2), .btn-mat').attr('style', 'background-color:#54a8ff!important;');
+   $('.login .title, .wow_form_fields>div>a, a.dec.main').attr('style', 'color: #54a8ff!important;');
+})
+
+$('.changeColorBtn.pink').on('click', function() {
+   $('.form-head>a:nth-child(2), .btn-mat').attr('style', 'background-color:#ff78fd!important;');
+   $('.login .title, .wow_form_fields>div>a, a.dec.main').attr('style', 'color: #ff78fd!important;');
+})
+
+$('.changeColorBtn.openPink').on('click', function() {
+   $('.form-head>a:nth-child(2), .btn-mat').attr('style', 'background-color:#ff77be!important;');
+   $('.login .title, .wow_form_fields>div>a, a.dec.main').attr('style', 'color: #ff77be!important;');
+})
+
+var working = false;
+var $this = $('#register');
+var $state = $this.find('.errors');
+$(function() {
+  $this.ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=register',
+    beforeSend: function() {
+    	<?php if ($wo['config']['password_complexity_system'] == 1) { ?>
+    	if ($('.helper-text .length').hasClass('valid') && $('.helper-text .lowercase').hasClass('valid') && $('.helper-text .uppercase').hasClass('valid') && $('.helper-text .special').hasClass('valid')) {
+    		working = true;
+			$this.find('button').attr("disabled", true);
+			$this.find('.add_wow_loader').addClass('btn-loading');
+    	}
+    	else{
+    		$state.html("<?php echo($wo['lang']['complexity_requirements']) ?>");
+    		return false;
+    	}
+        <?php } else{ ?>
+        	working = true;
+			$this.find('button').attr("disabled", true);
+			$this.find('.add_wow_loader').addClass('btn-loading');
+        <?php } ?>
+
+
+    },
+    success: function(data) {
+      if (data.status == 200) {
+				$state.removeClass('alert-danger');
+				$state.addClass('alert-success');
+        $state.html('<?php echo $wo['lang']['welcome_'] ?>');
+		$this.find('.add_wow_loader').removeClass('btn-loading');
+        setTimeout(function () {
+         window.location.href = data.location;
+        }, 1000);
+      } else if (data.status == 300) {
+        window.location.href = data.location;
+      } else {
+        $this.find('button').attr("disabled", false);
+		$this.find('.add_wow_loader').removeClass('btn-loading');
+        $state.html(data.errors);
+      }
+      working = false;
+    }
+  });
+});
+
+function activateButton(element) {
+	if(element.checked) {
+		document.getElementById("sign_submit").disabled = false;
+	}
+	else  {
+		document.getElementById("sign_submit").disabled = true;
+	}
+};
+
+<?php if ($wo['config']['password_complexity_system'] == 1) { ?>
+
+(function(){
+	var helperText = {
+		charLength: document.querySelector('.helper-text .length'),
+		lowercase: document.querySelector('.helper-text .lowercase'),
+		uppercase: document.querySelector('.helper-text .uppercase'),
+		special: document.querySelector('.helper-text .special')
+	};
+	var password = document.querySelector('#password');
+
+
+
+	var pattern = {
+		charLength: function() {
+			if( password.value.length >= 6 ) {
+				return true;
+			}
+		},
+		lowercase: function() {
+			var regex = /^(?=.*[a-z]).+$/; // Lowercase character pattern
+
+			if( regex.test(password.value) ) {
+				return true;
+			}
+		},
+		uppercase: function() {
+			var regex = /^(?=.*[A-Z]).+$/; // Uppercase character pattern
+
+			if( regex.test(password.value) ) {
+				return true;
+			}
+		},
+		special: function() {
+			var regex = /^(?=.*[0-9_\W]).+$/; // Special character or number pattern
+
+			if( regex.test(password.value) ) {
+				return true;
+			}
+		}
+	};
+
+	// Listen for keyup action on password field
+	function CheckCPassword() {
+		$('.helper-text').slideDown('slow', function() {
+  	    	
+  	    });
+		// Check that password is a minimum of 8 characters
+		patternTest( pattern.charLength(), helperText.charLength );
+		
+		// Check that password contains a lowercase letter		
+		patternTest( pattern.lowercase(), helperText.lowercase );
+		
+		// Check that password contains an uppercase letter
+		patternTest( pattern.uppercase(), helperText.uppercase );
+		
+		// Check that password contains a number or special character
+		patternTest( pattern.special(), helperText.special );
+    
+	    // Check that all requirements are fulfilled
+	    if( hasClass(helperText.charLength, 'valid') &&
+				  hasClass(helperText.lowercase, 'valid') && 
+				 	hasClass(helperText.uppercase, 'valid') && 
+				  hasClass(helperText.special, 'valid')
+			) {
+				addClass(password.parentElement, 'valid');
+	    }
+	    else {
+	      removeClass(password.parentElement, 'valid');
+	    }
+	}
+  password.addEventListener('keyup', CheckCPassword);
+  password.addEventListener('input', CheckCPassword);
+
+	function patternTest(pattern, response) {
+		if(pattern) {
+      addClass(response, 'valid');
+    }
+    else {
+      removeClass(response, 'valid');
+    }
+	}
+
+	function addClass(el, className) {
+		if (el.classList) {
+			el.classList.add(className);
+		}
+		else {
+			el.className += ' ' + className;
+		}
+	}
+
+	function removeClass(el, className) {
+		if (el.classList)
+				el.classList.remove(className);
+			else
+				el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+	}
+
+	function hasClass(el, className) {
+		if (el.classList) {
+			console.log(el.classList);
+			return el.classList.contains(className);
+		}
+		else {
+			new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+		}
+	}
+
+})();
+<?php } ?>
+</script> -->
+<script>
+	window.location.replace('<?php echo $wo['config']['site_url'];?>')
+</script>

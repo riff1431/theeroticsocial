@@ -1,12 +1,12 @@
 <?php
 // +------------------------------------------------------------------------+
-// | @author Deen Doughouz (DoughouzForest)
-// | @author_url 1: http://www.wowonder.com
-// | @author_url 2: http://codecanyon.net/user/doughouzforest
-// | @author_email: wowondersocial@gmail.com
+// | @author Arifur Rahman
+// | @agency Huipper
+// | @url https://huipper.com/
+// | @github https://github.com/arifurfullstack
 // +------------------------------------------------------------------------+
-// | WoWonder - The Ultimate Social Networking Platform
-// | Copyright (c) 2018 WoWonder. All rights reserved.
+// | theeroticsocial - The Ultimate Social Networking Platform
+// | Copyright (c) 2026 theeroticsocial. All rights reserved.
 // +------------------------------------------------------------------------+
 $products = array();
 

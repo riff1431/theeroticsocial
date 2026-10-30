@@ -6,6 +6,7 @@
       <meta name="title" content="<?php echo $wo['title'];?>">
       <meta name="description" content="<?php echo $wo['description'];?>">
       <meta name="keywords" content="<?php echo $wo['keywords'];?>">
+      <meta name="author" content="Arifur Rahman">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <meta name="pinterest-rich-pin" content="false" />
       <?php
@@ -166,6 +167,8 @@
          ?>
          <link rel="canonical" href="<?php echo($link_text) ?>" />
       <?php } ?>
+      <link rel="apple-touch-icon" href="<?php echo $wo['config']['theme_url'];?>/img/icon.png">
+      <link rel="icon" type="image/png" href="<?php echo $wo['config']['theme_url'];?>/img/icon.png"/>
       <link rel="shortcut icon" type="image/png" href="<?php echo $wo['config']['theme_url'];?>/img/icon.png"/>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/general-style-plugins.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php if($wo['language_type'] == 'rtl' && $wo['page'] != 'welcome') { ?>
@@ -188,19 +191,44 @@
       </style>
 
       <?php if ($wo['page'] == 'welcome') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <?php
+      $custom_welcome_style = (!empty($wo['config']['welcome_page_style']) && $wo['config']['welcome_page_style'] != 'default') ? $wo['config']['welcome_page_style'] : '';
+      if (!empty($_GET['preview_welcome'])) {
+          $custom_welcome_style = Wo_Secure($_GET['preview_welcome']);
+      }
+      $welcome_css_file = 'stylesheet/welcome.css';
+      if (!empty($custom_welcome_style) && $custom_welcome_style != 'default') {
+          if (file_exists('./themes/' . $wo['config']['theme'] . '/stylesheet/' . $custom_welcome_style . '.css')) {
+              $welcome_css_file = 'stylesheet/' . $custom_welcome_style . '.css';
+          } elseif (file_exists('./themes/' . $wo['config']['theme'] . '/stylesheet/welcome_styles/' . $custom_welcome_style . '/welcome.css')) {
+              $welcome_css_file = 'stylesheet/welcome_styles/' . $custom_welcome_style . '/welcome.css';
+          }
+      }
+      ?>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/<?php echo $welcome_css_file; ?><?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } else { ?>
       <script src="<?php echo $wo['config']['theme_url'];?>/javascript/twilio-video.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/style.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
       <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/font-awesome-4.7.0/css/font-awesome.min.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 	  <?php if ($wo['page'] == 'messages') { ?>
 	  <link href="<?php echo $wo['config']['theme_url'];?>/stylesheet/Krub.css?version=<?php echo $wo['config']['version']; ?>" rel="stylesheet">
 	  <?php } ?>
 
      <?php if ($wo['page'] == 'welcome' && $wo['language_type'] == 'rtl') { ?>
-      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/welcome_rtl.css<?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
+      <?php
+      $welcome_rtl_file = 'stylesheet/welcome_rtl.css';
+      if (!empty($custom_welcome_style) && $custom_welcome_style != 'default') {
+          if (file_exists('./themes/' . $wo['config']['theme'] . '/stylesheet/' . $custom_welcome_style . '_rtl.css')) {
+              $welcome_rtl_file = 'stylesheet/' . $custom_welcome_style . '_rtl.css';
+          } elseif (file_exists('./themes/' . $wo['config']['theme'] . '/stylesheet/welcome_styles/' . $custom_welcome_style . '/welcome_rtl.css')) {
+              $welcome_rtl_file = 'stylesheet/welcome_styles/' . $custom_welcome_style . '/welcome_rtl.css';
+          }
+      }
+      ?>
+      <link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/<?php echo $welcome_rtl_file; ?><?php echo $wo['update_cache']; ?>?version=<?php echo $wo['config']['version']; ?>">
       <?php } ?>
 
       <script src="<?php echo $wo['config']['theme_url'];?>/javascript/jquery-3.1.1.min.js?version=<?php echo $wo['config']['version']; ?>"></script>
@@ -1684,6 +1712,12 @@
 
     <a href="<?php echo $wo['config']['site_url'].'/checkout';?>" data-ajax="?link1=checkout" id="load_checkout" style="display: none;"></a>
 
+	<?php if ($wo['page'] == 'welcome') {
+      if (!empty($custom_welcome_style) && $custom_welcome_style != 'default' && file_exists('./themes/' . $wo['config']['theme'] . '/javascript/' . $custom_welcome_style . '.js')) { ?>
+        <script src="<?php echo $wo['config']['theme_url'];?>/javascript/<?php echo $custom_welcome_style;?>.js<?php echo $wo['update_cache']; ?>"></script>
+      <?php } elseif (file_exists('./themes/' . $wo['config']['theme'] . '/javascript/welcome.js')) { ?>
+        <script src="<?php echo $wo['config']['theme_url'];?>/javascript/welcome.js<?php echo $wo['update_cache']; ?>"></script>
+      <?php } } ?>
 	<div id="select-language" class="modal fade" data-keyboard="false">
 		<div class="modal-dialog modal-lg wow_mat_mdl lang_select_modal">
             <div class="modal-content">

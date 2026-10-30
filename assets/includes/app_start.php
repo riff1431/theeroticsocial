@@ -523,7 +523,7 @@ if (!$wo['config']['can_use_ai_blog']) {
 $wo['config']['report_reasons'] = json_decode($wo['config']['report_reasons'],true);
 
 
-$wo['config']['filesVersion'] = "4.3.4";
+$wo['config']['filesVersion'] = "1.0.1";
 
 if ($wo['config']['filesVersion'] != $wo['config']['version']) {
     ini_set('display_errors', 0);

@@ -1,12 +1,12 @@
 <?php
 // +------------------------------------------------------------------------+
-// | @author Deen Doughouz (DoughouzForest)
-// | @author_url 1: http://www.wowonder.com
-// | @author_url 2: http://codecanyon.net/user/doughouzforest
-// | @author_email: wowondersocial@gmail.com
+// | @author Arifur Rahman
+// | @agency Huipper
+// | @url https://huipper.com/
+// | @github https://github.com/arifurfullstack
 // +------------------------------------------------------------------------+
-// | WoWonder - The Ultimate Social Networking Platform
-// | Copyright (c) 2022 WoWonder. All rights reserved.
+// | theeroticsocial - The Ultimate Social Networking Platform
+// | Copyright (c) 2026 theeroticsocial. All rights reserved.
 // +------------------------------------------------------------------------+
 function sanitize_output($buffer) {
     $search  = array(
@@ -40,6 +40,17 @@ function Wo_LoadPage($page_url = '') {
         }
     }
     $page         = './themes/' . $wo['config']['theme'] . '/layout/' . $page_url . '.phtml';
+    $welcome_style = (!empty($wo['config']['welcome_page_style']) && $wo['config']['welcome_page_style'] != 'default') ? $wo['config']['welcome_page_style'] : '';
+    if (!empty($_GET['preview_welcome'])) {
+        $welcome_style = Wo_Secure($_GET['preview_welcome']);
+    }
+    if (!empty($welcome_style) && $welcome_style != 'default' && strpos($page_url, 'welcome/') === 0) {
+        $sub_welcome = substr($page_url, 8);
+        $custom_page = './themes/' . $wo['config']['theme'] . '/layout/welcome_styles/' . $welcome_style . '/' . $sub_welcome . '.phtml';
+        if (file_exists($custom_page)) {
+            $page = $custom_page;
+        }
+    }
     $page_content = '';
     ob_start();
     require($page);

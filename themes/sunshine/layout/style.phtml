@@ -57,12 +57,20 @@
 .icon_main_fill {
 	fill: <?php echo $wo['config']['btn_background_color'];?>;
 }
-.wo_follow_btn {
-    background: <?php echo $wo['config']['btn_background_color'];?> !important;
+.wo_follow_btn, .btn-main {
+    background: linear-gradient(135deg, #dfa544 0%, #c59b27 50%, #a06816 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 4px 14px rgba(197, 155, 39, 0.28) !important;
+    color: #ffffff !important;
+}
+.wo_follow_btn:hover, .btn-main:hover {
+    background: linear-gradient(135deg, #ffd46a 0%, #dfa544 50%, #b48130 100%) !important;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.42) !important;
+    color: #ffffff !important;
 }
 
 .user-status-home ul.status-list li.create_new .avatar:before {
-    background: linear-gradient(135.87deg, <?php echo $wo['config']['btn_background_color'];?> 1.25%, #3F4354 51.73%, rgba(198, 77, 83, 0.17) 77.22%);
+    background: linear-gradient(135.87deg, <?php echo $wo['config']['btn_background_color'];?> 1.25%, #3F4354 51.73%, rgba(197, 155, 39, 0.17) 77.22%);
 }
 .go_pro_table_background .plan_foot .btn {
 	color: <?php echo $wo['config']['btn_background_color'];?>;
